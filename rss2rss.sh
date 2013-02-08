@@ -3,7 +3,7 @@
 # Convert mp3 to CBR from vesti.net podcast
 # and replace dowload url in original atom rss
 #
-# enrone@gmail.com 2013
+# alvlapo@gmail.com 2013
 
 RSS_URL='http://vestinet.podfm.ru/rss/rss.xml'
 RSS_NAME='vestinet'
@@ -32,7 +32,7 @@ then
   touch $TMP_FILE_LIST
 fi
 
-wget $RSS_URL -O $RSS_FILE
+wget -nv $RSS_URL -O $RSS_FILE
 
 MP3_URL_LIST=`grep -Po "(http:\/\/.+\.mp3)" $RSS_FILE | head -n $LAST_FILES_COUNT`
 
@@ -47,7 +47,7 @@ do
   then
     TMP_MP3_FILE=/tmp/$MP3_NAME
 
-    wget $MP3_URL -O $TMP_MP3_FILE
+    wget -nv $MP3_URL -O $TMP_MP3_FILE
     lame -S --preset cbr 192 $TMP_MP3_FILE $MP3_FILE
 
     rm -f "$TMP_MP3_FILE"
