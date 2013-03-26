@@ -32,6 +32,7 @@ then
   touch $TMP_FILE_LIST
 fi
 
+echo ">> START <<"
 wget -nv $RSS_URL -O $RSS_FILE
 
 MP3_URL_LIST=`grep -Po "(http:\/\/.+\.mp3)" $RSS_FILE | head -n $LAST_FILES_COUNT`
@@ -57,7 +58,7 @@ do
 
   NEW_MP3_URL=$HOST_URL/$RSS_NAME/$MD5_NAME
 
-  replace -s "$MP3_URL?stat=rss" "$NEW_MP3_URL" -- $RSS_FILE
+  replace -s "$MP3_URL" "$NEW_MP3_URL" -- $RSS_FILE
 done
 
 for FILE in $DNL_DIR/*.mp3
