@@ -32,7 +32,7 @@ then
   touch $TMP_FILE_LIST
 fi
 
-echo ">> START <<"
+echo ">>" `date` "<<"
 wget -nv $RSS_URL -O $RSS_FILE
 
 MP3_URL_LIST=`grep -Po "(http:\/\/.+\.mp3)" $RSS_FILE | head -n $LAST_FILES_COUNT`
